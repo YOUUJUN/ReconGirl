@@ -1,4 +1,4 @@
-# test
+# my-first-app-project
 
 ## Project setup
 ```
