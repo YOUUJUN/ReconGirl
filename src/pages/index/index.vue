@@ -1,25 +1,69 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view>
-			<text class="title">{{title}}</text>
-		</view>
+
+		<scroll-panel></scroll-panel>
+
+<!--		<img class="logo" src="/static/logo.png" />-->
+
 	</view>
 </template>
 
 <script>
+
+	import Navigation from '@/components/Navigation/Navigation.vue';
+
+	import scrollPanel from '@/components/ScrollPanel/ScrollPanel.vue';
+
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: 'Hello2'
 			}
 		},
+
+		components : {scrollPanel, Navigation},
+
 		onLoad() {
+			this.checkApp();
+
+			this.checkPage();
+		},
+
+
+		created (){
+			uni.getSystemInfo({
+				success (obj){
+					console.log('obj',obj);
+				}
+			})
 
 		},
+
 		methods: {
 
+			checkApp (){
+				console.log('global',global);
+				const app = getApp();
+				console.log('app-->',app);
+				console.log('data-->',app.globalData);
+				console.log('$scope-->',this.$scope);
+			},
+
+
+			checkPage (){
+				const page = getCurrentPages();
+				console.log('page-->',page[0]);
+
+				// let webView = page[0].$getAppWebview();
+				let route = page[0].route;
+				// console.log('webview',webView);
+				console.log(route);
+				const currentView = this.$scope.$getAppWebview();
+				this.title = currentView;
+			},
+
 		}
+
 	}
 </script>
 
@@ -46,4 +90,13 @@
 		font-size: 36rpx;
 		color: #8f8f94;
 	}
+
+
+	page,.main{
+		width: 100%;
+		height: 100%;
+	}
+
+
+
 </style>

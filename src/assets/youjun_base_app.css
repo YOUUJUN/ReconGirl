@@ -1,0 +1,63 @@
+/* youjun_base.css v1.0.0 */
+/*
+*Written by youjun
+*design for youjun
+*
+*/
+/* Document
+   ========================================================================== */
+
+a:active{
+    background-color: #a0cfff;
+}
+
+img{
+    width:100%;
+    height:auto;
+}
+
+.yj-btn-icon{
+    display: inline-block;
+    border: none;
+    background-color: #fff;
+    outline: none;
+    line-height: 1;
+    margin: 0;
+    height: 100%;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.yj-btn-icon:active{
+    color:#0880d7;
+    background-color: #dbedff;
+}
+
+.yj-btn-icon::after {
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
