@@ -40,7 +40,7 @@
                 </h3>
 
                 <div class="content-view-info">
-                    <span>878万次观看</span><span>11个月前</span>
+                    <span>878万次观看</span><span style="margin:8rpx;">•</span><span>11个月前</span>
                 </div>
 
                 <div class="sharer-comments">

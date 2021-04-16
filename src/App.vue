@@ -6,7 +6,21 @@
         },
 
 		onLaunch() {
-			console.log('App Launch')
+            uni.onTabBarMidButtonTap((options) => {
+                console.log('options');
+                setTimeout(()=>{
+                    uni.navigateTo({
+                        url: '/pages/post/post',
+                        success : result => {
+                            console.log('result', result);
+                        },
+                        fail : msg =>{
+                            console.log('msg', msg);
+                        }
+                    });
+                },0)
+            })
+
 		},
 		onShow() {
 			console.log('App Show')
@@ -16,6 +30,14 @@
 		},
         onError(){
 
+        },
+
+        onReady (){
+            uni.onTabBarMidButtonTap((options) => {
+                console.log('well->now mid btn is taped', options);
+
+
+            })
         },
 
         onUniNViewMessage(){
@@ -32,7 +54,13 @@
 
         onThemeChange(){
 
+        },
+
+
+        methods : {
+
         }
+
 	}
 </script>
 
@@ -50,6 +78,32 @@
         body{
             overflow-y: scroll;
         }
+    }
+
+    /*---rewrite swiper---*/
+
+    uni-swiper .uni-swiper-wrapper {
+        overflow: visible;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    uni-swiper .uni-swiper-dots-horizontal {
+        left: 50%;
+        bottom: -18px;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-transform: translate(-50%);
+        transform: translate(-50%);
+    }
+
+    uni-swiper-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
 </style>

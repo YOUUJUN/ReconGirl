@@ -63,20 +63,240 @@
 
                 </div>
 
-
-                <h3 class="content-description">
-                    <span class="content-name">Human digestive system</span>
-                    <span class="content-description-btn"><i ref="icon" class="fa fa-angle-down"></i></span>
-                </h3>
+<!--                <h3 class="content-description">-->
+<!--                    <span class="content-name">Human digestive system</span>-->
+<!--                    <span class="content-description-btn"><i ref="icon" class="fa fa-angle-down"></i></span>-->
+<!--                </h3>-->
 
                 <div class="content-view-info">
-                    <span>878万次观看</span><span style="margin:8rpx;">•</span><span>11个月前</span>
+                    <span class="count">878万</span><span>次赞</span>
                 </div>
 
                 <div class="sharer-comments">
 
-                    <span>{{title}}</span>
+                    <div class="sharer-comments-item">
+                        <span class="sharer-comments-user">YOUJUN</span>
+                        <span class="sharer-comments-content">{{title}}</span><span class="sharer-comments-postfix">{{postfix}}</span>
+                    </div>
 
+                    <div class="sharer-comments-item">
+                        <span class="sharer-comments-user">LVNDMARK</span>
+                        <span class="sharer-comments-content">Let's go kill some killa</span><span class="sharer-comments-postfix">{{postfix}}</span>
+                    </div>
+
+                    <div class="sharer-comments-item">
+                        <span class="sharer-comments-user">ERIC</span>
+                        <span class="sharer-comments-content">Well, this is a test message, this is a test message,this is a test message, this is a test message</span><span class="sharer-comments-postfix">{{postfix}}</span>
+                    </div>
+
+
+                </div>
+
+                <div class="sharer-time">
+                    <span>11个月前</span>
+                </div>
+
+            </div>
+
+            <div class="yj-divider"></div>
+
+
+        </div>
+
+        <div class="sharer-container">
+
+            <div class="sharer-header">
+
+                <div class="sharer-header-left">
+
+                    <a class="user-img" href="javascript:void(0);">
+                        <img src="static/youjun.jpg" @click="test">
+                    </a>
+
+                    <div class="user-info">
+
+                        <ul class="user-info-list">
+                            <li><a class="user-name">YOUJUN</a></li>
+                            <!--                        <li><span class="user-post-time">2021/4/10</span></li>-->
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+                <button class="yj-btn-icon" style="margin-right:18rpx;">
+                    <span class="iconfont icon-gengduo"></span>
+                </button>
+
+            </div>
+
+            <!--            <div class="yj-divider"></div>-->
+
+            <div class="sharer-content">
+
+                <img src="static/judy.jpg">
+
+            </div>
+
+            <!--            <div class="yj-divider"></div>-->
+
+            <div class="sharer-foot">
+
+                <div class="sharer-operator">
+
+                    <div class="sharer-operator-left">
+
+                        <button class="yj-btn-icon">
+                            <span class="iconfont icon-aixin"></span>
+                        </button>
+
+                        <button class="yj-btn-icon">
+                            <span class="iconfont icon-pinglun1"></span>
+                        </button>
+
+                        <button class="yj-btn-icon">
+                            <span class="iconfont icon-fenxiang"></span>
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+                <!--                <h3 class="content-description">-->
+                <!--                    <span class="content-name">Human digestive system</span>-->
+                <!--                    <span class="content-description-btn"><i ref="icon" class="fa fa-angle-down"></i></span>-->
+                <!--                </h3>-->
+
+                <div class="content-view-info">
+                    <span class="count">878万</span><span>次赞</span>
+                </div>
+
+                <div class="sharer-comments">
+
+                    <div class="sharer-comments-item">
+                        <span class="sharer-comments-user">YOUJUN</span>
+                        <span class="sharer-comments-content">{{title}}</span><span class="sharer-comments-postfix">{{postfix}}</span>
+                    </div>
+
+                    <div class="sharer-comments-item">
+                        <span class="sharer-comments-user">LVNDMARK</span>
+                        <span class="sharer-comments-content">Let's go kill some killa</span><span class="sharer-comments-postfix">{{postfix}}</span>
+                    </div>
+
+                    <div class="sharer-comments-item">
+                        <span class="sharer-comments-user">ERIC</span>
+                        <span class="sharer-comments-content">Well, this is a test message, this is a test message,this is a test message, this is a test message</span><span class="sharer-comments-postfix">{{postfix}}</span>
+                    </div>
+
+
+                </div>
+
+                <div class="sharer-time">
+                    <span>11个月前</span>
+                </div>
+
+            </div>
+
+            <div class="yj-divider"></div>
+
+
+        </div>
+
+        <div class="sharer-container">
+
+            <div class="sharer-header">
+
+                <div class="sharer-header-left">
+
+                    <a class="user-img" href="javascript:void(0);">
+                        <img src="static/youjun.jpg" @click="test">
+                    </a>
+
+                    <div class="user-info">
+
+                        <ul class="user-info-list">
+                            <li><a class="user-name">YOUJUN</a></li>
+                            <!--                        <li><span class="user-post-time">2021/4/10</span></li>-->
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+                <button class="yj-btn-icon" style="margin-right:18rpx;">
+                    <span class="iconfont icon-gengduo"></span>
+                </button>
+
+            </div>
+
+            <!--            <div class="yj-divider"></div>-->
+
+            <div class="sharer-content">
+
+<!--                <img src="static/killa.jpg">-->
+                <image-sharer></image-sharer>
+
+            </div>
+
+            <!--            <div class="yj-divider"></div>-->
+
+            <div class="sharer-foot">
+
+                <div class="sharer-operator">
+
+                    <div class="sharer-operator-left">
+
+                        <button class="yj-btn-icon">
+                            <span class="iconfont icon-aixin"></span>
+                        </button>
+
+                        <button class="yj-btn-icon">
+                            <span class="iconfont icon-pinglun1"></span>
+                        </button>
+
+                        <button class="yj-btn-icon">
+                            <span class="iconfont icon-fenxiang"></span>
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+                <!--                <h3 class="content-description">-->
+                <!--                    <span class="content-name">Human digestive system</span>-->
+                <!--                    <span class="content-description-btn"><i ref="icon" class="fa fa-angle-down"></i></span>-->
+                <!--                </h3>-->
+
+                <div class="content-view-info">
+                    <span class="count">878万</span><span>次赞</span>
+                </div>
+
+                <div class="sharer-comments">
+
+                    <div class="sharer-comments-item">
+                        <span class="sharer-comments-user">YOUJUN</span>
+                        <span class="sharer-comments-content">{{title}}</span><span class="sharer-comments-postfix">{{postfix}}</span>
+                    </div>
+
+                    <div class="sharer-comments-item">
+                        <span class="sharer-comments-user">LVNDMARK</span>
+                        <span class="sharer-comments-content">Let's go kill some killa</span><span class="sharer-comments-postfix">{{postfix}}</span>
+                    </div>
+
+                    <div class="sharer-comments-item">
+                        <span class="sharer-comments-user">ERIC</span>
+                        <span class="sharer-comments-content">Well, this is a test message, this is a test message,this is a test message, this is a test message</span><span class="sharer-comments-postfix">{{postfix}}</span>
+                    </div>
+
+
+                </div>
+
+                <div class="sharer-time">
+                    <span>11个月前</span>
                 </div>
 
             </div>
@@ -93,12 +313,18 @@
 
 <script>
 
+    import ImageSharer from '../ImageSharer/ImageSharer.vue';
+
     export default {
         data (){
             return {
-                title : 'just test'
+                title : 'just test',
+                content : 'sasasaa',
+                postfix : '...更多'
             }
         },
+
+        components : {ImageSharer},
 
         methods : {
             test(){
@@ -134,6 +360,7 @@
     .sharer-container{
         display : flex;
         flex-direction : column;
+        margin-bottom : 42rpx;
     }
 
     .sharer-header{
@@ -146,11 +373,15 @@
     .sharer-header-left{
         display: flex;
         flex-direction: row;
-        padding:8rpx 0;
+    }
+
+    .sharer-operator{
+        padding: 0 14rpx;
     }
 
     .sharer-operator-left .iconfont{
         font-size: 50rpx;
+        margin : 10rpx;
     }
 
     .user-img{
@@ -215,8 +446,8 @@
     /*---content----*/
 
     .sharer-content{
-        /*height : 520rpx;*/
         width : 100%;
+        border-top: 2rpx solid rgba(0,0,0,0.1);
     }
 
     .content-description{
@@ -239,8 +470,54 @@
     .content-view-info{
         color : rgba(0,0,0,0.6);
         font-size: 26rpx;
+        padding: 0 32rpx;
+    }
+
+    .content-view-info .count {
+        color : rgba(0,0,0,0.8);
+        font-weight: 600;
+        margin-right: 8rpx;
+    }
+
+
+    /*---comments---*/
+
+    .sharer-comments{
+        display: flex;
+        flex-direction: column;
         padding: 13rpx 32rpx;
     }
+
+    .sharer-comments-user{
+        font-size: 28rpx;
+        font-weight: 600;
+        font-family: -apple-system,PingFang sC,Hiragino sans GB,Microsoft YaHei,Helvetica Neue,Arial,sans-serif;
+        color:rgba(0,0,0,0.9);
+        margin-right:16rpx;
+    }
+
+    .sharer-comments-content{
+        font-size: 28rpx;
+        font-weight: 500;
+        font-family: -apple-system,PingFang sC,Hiragino sans GB,Microsoft YaHei,Helvetica Neue,Arial,sans-serif;
+        color:rgba(0,0,0,0.6);
+    }
+
+    .sharer-comments-postfix{
+        color:rgba(0,0,0,0.3);
+        font-size: 28rpx;
+        margin-left:6rpx;
+    }
+
+
+    /*---time---*/
+
+    .sharer-time{
+        color:rgba(0,0,0,0.3);
+        font-size: 24rpx;
+        padding: 0 32rpx;
+    }
+
 
 
 </style>

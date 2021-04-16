@@ -22,6 +22,7 @@
             "style": {
                 "navigationBarTitleText": "",
                 "app-plus" : {
+                    "scrollIndicator" : "none",
                     "titleNView" : {
                         "titleAlign": "center",
                         "tags" : [
@@ -56,6 +57,12 @@
                         ]
                     }
                 }
+            }
+        },
+        {
+            "path": "pages/post/post",
+            "style": {
+                "navigationBarTitleText": "新帖子"
             }
         },
         {

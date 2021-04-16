@@ -23,7 +23,29 @@
 
 		components : {scrollPanel, Navigation},
 
+		onNavigationBarButtonTap(obj){
+			let index = obj.index;
+			switch (index) {
+				case 0:
+					this.openCamera();
+					break;
+				case 1:
+					uni.navigateTo({
+						url: '/pages/post/post',
+						success : result => {
+							console.log('result', result);
+						},
+						fail : msg =>{
+							console.log('msg', msg);
+						}
+					});
+					console.log('hello');
+					break;
+			}
+		},
+
 		onLoad() {
+
 			this.checkApp();
 
 			this.checkPage();
@@ -40,6 +62,12 @@
 		},
 
 		methods: {
+
+			openCamera(){
+				let camera = plus.camera.getCamera(1);
+				camera.captureImage();
+			},
+
 
 			checkApp (){
 				console.log('global',global);
