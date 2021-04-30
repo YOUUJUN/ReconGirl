@@ -39,7 +39,10 @@
                     //     this.guidePages = true
                     // }
 
-                    this.guidePages = true
+                    this.guidePages = true;
+                    uni.switchTab({
+                        url: '/pages/index/index'
+                    });
                 } catch(e) {
                     // error
                     uni.setStorage({

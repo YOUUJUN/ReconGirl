@@ -10,6 +10,7 @@ let myDIYAxios =  (options) => {
     // Add a request interceptor
     $axios.interceptors.request.use((config) =>{
 
+
         return config;
     },(error)=>{
         return Promise.reject(error);
@@ -17,6 +18,9 @@ let myDIYAxios =  (options) => {
 
 
     $axios.interceptors.response.use((response) =>{
+
+
+
         //do something with response data;
         return response;
     }, (error) =>{

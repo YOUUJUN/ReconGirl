@@ -62,7 +62,10 @@
         {
             "path": "pages/post/post",
             "style": {
-                "navigationBarTitleText": "新帖子"
+                "navigationBarTitleText": "新帖子",
+                "app-plus" : {
+                    "scrollIndicator" : "none"
+                }
             }
         },
         {

@@ -106,4 +106,9 @@
         align-items: center;
     }
 
+    /*.uni-scroll-view-content{*/
+    /*    display: flex;*/
+    /*    flex-wrap: wrap;*/
+    /*}*/
+
 </style>
