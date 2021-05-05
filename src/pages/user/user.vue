@@ -11,7 +11,7 @@
                     :src="src"
                     :disablePreview = false
                     :imageCenter = true
-
+                    :fit = true
                     @load="load"
                     @error="errHandle"
                     @cropped="cropped"
@@ -27,6 +27,7 @@
         />
         <view class="ctrls-wrap">
             <view class="ctrl" @tap="selectImg">上传图片</view>
+            <view class="ctrl" @tap="changeImg">图片模式</view>
         </view>
     </view>
 </template>
@@ -41,7 +42,8 @@
         data() {
             return {
                 src: '',
-                img: ''
+                img: '',
+                ctrl : false
             }
         },
         onLoad(opts) {
@@ -80,6 +82,18 @@
                         this.src = tempFilePaths[0]
                     }
                 })
+            },
+
+            changeImg(){
+                if(this.ctrl){
+                    this.$refs['cropper'].initImage();
+                    this.ctrl = false;
+                }else{
+                    this.$refs['cropper'].initImage2();
+                    this.ctrl = true;
+                }
+
+
             }
 
         }

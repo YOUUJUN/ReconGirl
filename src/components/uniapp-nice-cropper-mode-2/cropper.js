@@ -133,11 +133,17 @@ export default {
         zoom: 1
       },
       corner: {
-        left: 50,
-        right: 50,
-        bottom: 50,
-        top: 50
+        left: 0,
+        right: 0,
+        bottom: 0,
+        top: 0
       },
+      // corner: {
+      //   left: 50,
+      //   right: 50,
+      //   bottom: 50,
+      //   top: 50
+      // },
       image: {
         originWidth: 0,
         originHeight: 0,
@@ -276,6 +282,46 @@ export default {
       // this.preview() // preview
       // this.draw()
     },
+
+    async initImage2() {
+      if (!this.src) return
+
+      const [err, res] = await uni.getImageInfo({
+        src: this.src
+      })
+
+      if(err) {
+        this.$emit("error", err)
+      } else {
+        this.$emit('load', res)
+      }
+      console.log('res==>',res);
+      // init image size
+      this.image.originWidth = err ? this.ctrlWidth : res.width
+      this.image.originHeight = err ? this.ctrlHeight : res.height
+      // this.image.width = this.fit ? this.ctrlWidth : this.image.originWidth
+      this.image.height = this.ctrlHeight;
+      this.image.width = err ? this.ctrlWidth : res.width / res.height * this.image.height
+      // this.image.height = err ? this.ctrlHeight : res.height / res.width * this.image.width
+
+      this.img = res.path
+
+      const offset = [0, 0]
+      if(this.imageCenter) {
+        offset[0] = (this.ctrlWidth - this.image.width) / 2
+        offset[1] = (this.ctrlHeight - this.image.height) / 2
+      }
+      offset[0] += this.offset[0] || 0
+      offset[1] += this.offset[1] || 0
+
+      this.setTranslate(offset)
+      this.setZoom(this.zoom)
+
+      // this.setBoundary() // boundary detect
+      // this.preview() // preview
+      // this.draw()
+    },
+
     init() {
       this.pretouch = {}
       this.handles = {}
@@ -348,7 +394,6 @@ export default {
         this.preVector.x = v.x
         this.preVector.y = v.y
 
-
       } else { // translate
         const diffX = point.pageX - this.touch.startX
         const diffY = point.pageY - this.touch.startY
@@ -369,6 +414,7 @@ export default {
         this.movetouch.y = point.pageY
       }
       // !this.cutMode && this.setBoundary()
+      // this.setBoundary();
       if (e.touches.length > 1) {
         e.preventDefault()
       }
@@ -377,13 +423,24 @@ export default {
       this.transitionMeta = `all 0.3s`;
       this.doubleTap && this.$emit('doubleTap')
       // this.cutMode && this.setBoundary()
+
+      // this.image.width = this.image.width * this.transform.zoom;
+      // this.image.height = this.image.height * this.transform.zoom;
+
+      this.setBoundary();
       this.init()
       // !this.disablePreview && this.preview()
-      this.draw();
+      // this.draw();
+      // this.bonce();
     },
 
     bonce (){
+      const transform = this.transform.translate;
+      let x = transform.x;
+      let y = transform.y;
+      console.log('x==>',x,'y===>',y);
 
+      this.setTranslate([0,0]);
     },
 
     translate() {
@@ -423,15 +480,24 @@ export default {
       let zoom = this.transform.zoom
       zoom = zoom < this.minZoom ? this.minZoom : (zoom > this.maxZoom ? this.maxZoom : zoom)
       this.transform.zoom = zoom
-      if (!this.boundDetect || !this.disableRotate && !this.freeBoundDetect) return true
+      // if (!this.boundDetect || !this.disableRotate && !this.freeBoundDetect) return true
       const translate = this.transform.translate
       const corner = this.corner
       const minX = corner.left - this.image.width + this.ctrlWidth - this.image.width * (zoom - 1) / 2
       const maxX = corner.left + this.image.width * (zoom - 1) / 2
       const minY = corner.top - this.image.height + this.ctrlHeight - this.image.height * (zoom - 1) / 2
       const maxY = corner.top + this.image.height * (zoom - 1) / 2
-      translate.x = Math.floor(translate.x < minX ? minX : (translate.x > maxX ? maxX : translate.x))
-      translate.y = Math.floor(translate.y < minY ? minY : (translate.y > maxY ? maxY : translate.y))
+
+      console.log('this.image.width+>',this.image.width);
+      console.log('this.ctrlWidth=>',this.ctrlWidth);
+      if(this.image.width * zoom >= this.ctrlWidth && this.image.height * zoom >= this.ctrlHeight){
+        translate.x = Math.floor(translate.x < minX ? minX : (translate.x > maxX ? maxX : translate.x))
+        translate.y = Math.floor(translate.y < minY ? minY : (translate.y > maxY ? maxY : translate.y))
+      }else{
+
+      }
+
+      console.log('x==>',translate.x,'y===>',translate.y);
     },
 
 
