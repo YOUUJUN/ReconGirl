@@ -38,7 +38,7 @@
 
         data() {
             return {
-                candidates: ['北京', '南京', '东京', '武汉', '天津', '上海', '海口'],
+                // candidates: ['北京', '南京', '东京', '武汉', '天津', '上海', '海口'],
                 showSelector: false,
                 emptyTips: '无匹配项'
             }

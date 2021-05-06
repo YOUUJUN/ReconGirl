@@ -8,6 +8,7 @@ Vue.config.productionTip = false;
 
 Vue.prototype.$store = store;
 Vue.prototype.$axios = utils.axios;
+Vue.prototype.$tools = utils.tools;
 
 App.mpType = 'app'
 

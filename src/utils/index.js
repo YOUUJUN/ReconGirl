@@ -1,7 +1,10 @@
 import axios from './http';
 
+import tools from './tool_function';
+
 const lib = {
-    axios
+    axios,
+    tools
 };
 
 export default lib;

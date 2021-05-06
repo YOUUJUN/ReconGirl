@@ -7,7 +7,7 @@
                     :zoom="1"
                     :angle="0"
                     :max-zoom="3"
-                    :min-zoom="0.5"
+                    :min-zoom="1"
                     :src="src"
                     :disablePreview = false
                     :imageCenter = true
@@ -28,11 +28,13 @@
         <view class="ctrls-wrap">
             <view class="ctrl" @tap="selectImg">上传图片</view>
             <view class="ctrl" @tap="changeImg">图片模式</view>
+            <view class="ctrl" @tap="cutImg">裁剪图片</view>
         </view>
     </view>
 </template>
 <script>
     import ImageCropper from '@/components/uniapp-nice-cropper-mode-2/cropper.vue'
+    // import ImageCropper from '@/components/uniapp-nice-cropper-mode-1/cropper.vue'
     // import ImageCropper from '@/components/kd/cropper/cropper.vue'
 
     export default {
@@ -51,19 +53,19 @@
         },
         methods: {
             load(path, info) {
-                console.log(path, info)
-                setTimeout(() => {
-                    // 0.5秒钟后自动旋转45度
-                    // this.$refs.cropper.setRotate(45)
-                }, 500)
+                // console.log(path, info)
+                // setTimeout(() => {
+                //     // 0.5秒钟后自动旋转45度
+                //     // this.$refs.cropper.setRotate(45)
+                // }, 500)
             },
             beforeDraw(context, transform) {
-                context.setFillStyle('yellow')
-                transform.zoom = 2
+                // context.setFillStyle('yellow')
+                // transform.zoom = 2
             },
             afterDraw(ctx, info) {
-                ctx.setFillStyle('red')
-                ctx.fillText('我是一行小水印', info.width - 100, info.height - 20)
+                // ctx.setFillStyle('red')
+                // ctx.fillText('我是一行小水印', info.width - 100, info.height - 20)
             },
             cropped(e) {
                 console.log(e)
@@ -94,6 +96,10 @@
                 }
 
 
+            },
+
+            cutImg(){
+                this.$refs['cropper'].draw();
             }
 
         }

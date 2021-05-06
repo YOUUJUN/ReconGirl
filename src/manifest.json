@@ -1,5 +1,5 @@
 {
-    "name" : "",
+    "name" : "youjun",
     "appid" : "__UNI__1A77170",
     "description" : "",
     "versionName" : "1.0.0",
@@ -43,12 +43,14 @@
                     "<uses-feature android:name=\"android.hardware.camera\"/>",
                     "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
-                ]
+                ],
+                "abiFilters" : [ "armeabi-v7a" ]
             },
             "ios" : {},
             /* ios打包配置 */
             "sdkConfigs" : {}
-        }
+        },
+        "nvueLaunchMode" : ""
     },
     /* SDK配置 */
     "quickapp" : {},
