@@ -62,7 +62,6 @@
     export default {
         components: {
             ImageCropper,
-
         },
         data() {
             return {
