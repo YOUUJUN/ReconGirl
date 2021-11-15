@@ -10,7 +10,7 @@
                 console.log('options');
                 setTimeout(()=>{
                     uni.navigateTo({
-                        url: '/pages/post/post',
+                        url: '/pages/test/Test',
                         success : result => {
                             console.log('result', result);
                         },
@@ -64,13 +64,15 @@
 	}
 </script>
 
+<style lang="scss">
+    @import "uview-ui/index.scss";
+</style>
+
 <style>
 	/*每个页面公共css */
 
     @import 'assets/uni.css';
     @import 'assets/youjun_base_app.css';
-
-    @import "assets/iconfont/iconfont.css";
 
     /* H5 兼容 pc 所需 */
     /* #ifdef H5 */
@@ -110,5 +112,10 @@
     /*    display: flex;*/
     /*    flex-wrap: wrap;*/
     /*}*/
+
+
+
+
+
 
 </style>

@@ -1,13 +1,18 @@
 import Vue from 'vue'
 import App from './App'
 
+import uView from 'uview-ui';
+Vue.use(uView);
+
 import store from './store/index';
 import utils from './utils';
 
 Vue.config.productionTip = false;
 
 Vue.prototype.$store = store;
-Vue.prototype.$axios = utils.axios;
+Vue.prototype.$fly = utils.fly;
+
+
 Vue.prototype.$tools = utils.tools;
 
 App.mpType = 'app'

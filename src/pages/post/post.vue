@@ -15,21 +15,12 @@
             />
         </view>
         <view class="ctrls-wrap">
-            <view class="ctrl" @click="showDrawer('showLeft')">图库</view>
-            <uni-drawer ref="showLeft" mode="left" :width="320" @change="change($event,'showLeft')">
-                <view class="close">
-                    <view class="word-btn" hover-class="word-btn--hover" :hover-start-time="20" :hover-stay-time="70" @click="closeDrawer('showLeft')">
-                        <text class="word-btn-white">关闭Drawer</text>
-                    </view>
-
-
-
-                </view>
-            </uni-drawer>
+            <view class="ctrl" @click="statusChange">图库</view>
 
             <view class="ctrl" @tap="selectImg">上传图片</view>
             <view class="ctrl" @tap="changeImg">图片模式</view>
             <view class="ctrl" @tap="cutImg">裁剪图片</view>
+            <u-button @click="statusChange" :size="'mini'" :ripple="true" :hairLine="true" :type="'default'">山川天</u-button>
         </view>
 
         <div class="photo-picker-body">
@@ -51,6 +42,15 @@
         </div>
 
 
+
+        <u-picker
+                :mode="'selector'"
+                v-model="showPicker"
+                @confirm="confirm"
+                :range="range"
+                :range-key="rangKey"
+                :defaultSelector = "defaultSelector"
+        ></u-picker>
     </view>
 </template>
 <script>
@@ -72,6 +72,12 @@
                 src: '',
                 img: '',
                 ctrl : false,
+
+                imgDirList : [],
+                range: ['一', '片', '冰', '心', '在', '玉', '壶'],
+                rangKey: 'name',
+                showPicker : false,
+                defaultSelector : [0]
             }
         },
 
@@ -142,6 +148,7 @@
                 var privateDoc = plus.io.PRIVATE_DOC;
                 var localDoc = "file:///storage/emulated/0/Pictures";
                 let canvasDoc = "_doc";
+                let innerStorage = "file:///storage/emulated/0";
                 console.log('privateDoc=>', privateDoc);
 
 
@@ -157,6 +164,25 @@
                     var directoryReader = fs.createReader();
                     directoryReader.readEntries((entries) => {
                         console.log('entries++>', entries);
+
+                        let imgDirList = [];
+                        for(let item of entries){
+                            let obj = {};
+                            if(item.isFile === false){
+                                obj.name = item.name;
+                                obj.cursor = item;
+                                imgDirList.push(obj);
+                            }
+                        }
+
+                        this.imgDirList = imgDirList;
+
+                        let cache = [];
+                        for(let item of imgDirList){
+                            cache.push(item.name);
+                        }
+
+                        this.range = cache;
                     })
 
                 }, (err) => {
@@ -209,21 +235,71 @@
             },
 
 
+            getAllLoot(entries,callback){
+                console.log('get in getAllLoot');
+                let namesCache = [];
+                let cache = [];
+                let imgFace = ['jpg','png','gif','jpeg'];
 
-            /*--图库抽屉--*/
-            showDrawer(e) {
-                this.$refs[e].open()
-            },
-            // 关闭窗口
-            closeDrawer(e) {
-                this.$refs[e].close()
-            },
-            // 抽屉状态发生变化触发
-            change(e, type) {
-                console.log((type === 'showLeft' ? '左窗口' : '右窗口') + (e ? '打开' : '关闭'));
-                this[type] = e
+                entries.forEach((item, index) =>{
+                    if(item.isDirectory){
+                        let fileReader = item.createReader();
+                        fileReader.readEntries((files) => {
+                            for(let file of files){
+
+                                if(imgFace.includes(file.name.split('.')[1])){
+                                    if(!namesCache.includes(item.name)){
+                                        let obj = {
+                                            name : item.name,
+
+                                            cursor : item,
+                                            fullPath : item.fullPath
+                                        };
+                                        cache.push(obj);
+                                        namesCache.push(item.name);
+                                    }
+                                    break;
+                                }
+                            }
+
+                            if(index === entries.length - 1){
+                                callback(cache);
+                            }
+                        });
+                    }
+                })
             },
 
+            setImgData(files){
+                let cache = [];
+                for(let item of files){
+                    let obj = {};
+                    if(item.isFile === true){
+                        obj.url = item.fullPath;
+                        cache.push(obj);
+                    }
+                }
+                this.currentImgs = cache;
+            },
+
+
+            /*---picker---*/
+
+            statusChange(index) {
+                console.log('ok');
+                // this.showPicker = index == 0 ? true : false;
+                this.showPicker = true;
+            },
+
+            confirm(e){
+                console.log('choice===>',e);
+                let index = e[0];
+                let fileReader = this.imgDirList[index].cursor.createReader();
+                fileReader.readEntries((files) => {
+                    console.log('files==>', files);
+                    this.setImgData(files);
+                })
+            }
 
         }
     }
@@ -256,6 +332,7 @@
         flex-direction: row;
         height: 100%;
     }
+
     /deep/ .uni-scroll-view-content{
         display: flex;
         flex-wrap: wrap;
@@ -273,6 +350,13 @@
         height:100%;
         padding: 0.5px;
     }
+
+
+    /*---uView-ui-picker--*/
+    .u-datetime-picker{
+        width:100%;
+    }
+
 </style>
 <style lang="scss" scoped>
     .container {
@@ -282,7 +366,7 @@
         flex-direction: column;
         & .cropper-wrap {
             // flex: 1;
-            height: 700rpx;
+            height: 800rpx;
         }
         & .ctrls-wrap {
             display: flex;

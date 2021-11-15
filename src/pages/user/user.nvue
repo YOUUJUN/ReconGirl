@@ -1,0 +1,313 @@
+<template>
+
+
+    <view class="container">
+
+        <image src="../../static/judy.jpg" class="bgImg"></image>
+
+        <list class="list">
+
+            <refresh class="refresh" @refresh="onrefresh()" @pullingdown="onpullingdown"
+                     :display="refreshing ? 'show' : 'hide'">
+                <div class="refresh-view">
+                    <image class="refresh-icon" :src="refreshIcon" :style="{width: (refreshing || pulling) ? 0: '30px'}"
+                           :class="{'refresh-icon-active': refreshFlag}"></image>
+                    <loading-indicator class="loading-icon" animating="true" v-if="refreshing"></loading-indicator>
+                    <text class="loading-text">{{refreshText}}</text>
+                </div>
+            </refresh>
+
+            <cell>
+
+                <view class="user-wrap">
+
+                    <view class="user-header">
+
+                        <view class="user-info-wrap">
+
+                            <view class="user-info">
+                                <image class="user-img" src="../../static/judy.jpg"></image>
+
+                                <view class="user-profile-wrap">
+                                    <text class="user-name">YOUJUN</text>
+                                    <text class="user-profile">Hello World</text>
+                                </view>
+
+                            </view>
+
+                            <button class="user-setting" type="primary" size="mini">编辑资料</button>
+
+                        </view>
+
+                    </view>
+
+                    <view class="user-body">
+
+
+                    </view>
+
+
+                </view>
+
+            </cell>
+
+        </list>
+
+
+        <picker ref="settingPicker" @change="bindPickerChange" :value="index" :range="array" range-key="name"></picker>
+
+    </view>
+
+</template>
+<script>
+
+    export default {
+
+        data() {
+            return {
+
+                pulling: false,
+                isLoading: false,
+                refreshText: "",
+                loadingText: '加载更多...',
+
+                refreshIcon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB5QTFRFcHBw3Nzct7e39vb2ycnJioqK7e3tpqam29vb////D8oK7wAAAAp0Uk5T////////////ALLMLM8AAABxSURBVHja7JVBDoAgDASrjqj//7CJBi90iyYeOHTPMwmFZrHjYyyFYYUy1bwUZqtJIYVxhf1a6u0R7iUvWsCcrEtwJHp8MwMdvh2amHduiZD3rpWId9+BgPd7Cc2LIkPyqvlQvKxKBJ//Qwq/CacAAwDUv0a0YuKhzgAAAABJRU5ErkJggg==",
+                userSrc : "../../static/judy.jpg",
+
+                array: [{name:'中国'},{name: '美国'}, {name:'巴西'}, {name:'日本'}],
+
+            }
+        },
+
+        onLoad() {
+
+        },
+
+        onNavigationBarButtonTap(obj){
+            let index = obj.index;
+            switch (index) {
+                case 0:
+                    this.$refs['settingPicker']._show();
+                    break;
+                case 1:
+                    console.log(1);
+                    break;
+            }
+        },
+
+        methods: {
+
+            refreshData() {
+            },
+            onrefresh(e) {
+                if (!this.refreshFlag) {
+                    return;
+                }
+                this.refreshing = true;
+                this.refreshText = "正在刷新...";
+
+                setTimeout(() => {
+                    this.refreshData();
+                    this.pulling = true;
+                    this.refreshing = false;
+                    this.refreshFlag = false;
+                    this.refreshText = "已刷新";
+                    setTimeout(() => { // TODO fix ios和Android 动画时间相反问题
+                        this.pulling = false;
+                    }, 500);
+                }, 2000);
+            },
+            onpullingdown(e) {
+                if (this.refreshing || this.pulling) {
+                    return;
+                }
+                if (Math.abs(e.pullingDistance) > Math.abs(e.viewHeight)) {
+                    this.refreshFlag = true;
+                    this.refreshText = "释放立即刷新";
+                } else {
+                    this.refreshFlag = false;
+                    this.refreshText = "下拉可以刷新";
+                }
+            },
+
+
+
+            bindPickerChange: function(e) {
+                console.log('picker发送选择改变，携带值为：' + e.detail.value)
+            }
+        }
+    }
+</script>
+
+
+<style scoped>
+    /* #ifndef APP-PLUS */
+    page {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    /* #endif */
+
+    .bgImg{
+        width: auto;
+        height: 600rpx;
+    }
+
+
+    /*----*/
+
+    .container {
+        /*position: absolute;*/
+        /*left: 0;*/
+        /*right: 0;*/
+        /*top: 0;*/
+        /*bottom: 0;*/
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    .list{
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+
+
+    /*----user----*/
+
+    .user-wrap{
+        margin-top:250rpx;
+        background-color: rgba(0,0,0,0);
+    }
+
+    .user-header{
+        padding: 0 40rpx;
+        margin-bottom: 40rpx;
+    }
+
+    .user-info-wrap{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .user-info{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .user-img {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: 160rpx;
+        height: 160rpx;
+        border-radius: 50%;
+        border: 3rpx solid #fff;
+        -webkit-box-shadow: 0 3rpx 13rpx 0 rgba(0,0,0,.15);
+        box-shadow: 0 5rpx 13rpx 0 rgba(0,0,0,.15);
+    }
+
+
+    .user-profile-wrap{
+        margin-left: 30rpx;
+        padding-top:20rpx;
+        align-self: flex-start;
+    }
+
+    .user-name{
+        font-size: 30rpx;
+        color:#fff;
+        margin-bottom: 20rpx;
+    }
+
+    .user-profile{
+        font-size: 30rpx;
+        color:#fff;
+    }
+
+    .user-setting{
+        background-color: rgba(0,0,0,0);
+        border-color: #fff;
+        padding:3rpx 3rpx;
+    }
+
+    .user-body{
+        background-color: #fff;
+        border-radius : 20rpx;
+        padding: 100rpx;
+        height: 4000rpx;
+    }
+
+
+
+
+    .refresh {
+        display: flex;
+        width: 750 rpx;
+        height: 160rpx;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .refresh-view {
+        display: flex;
+        width: 750 rpx;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .refresh-icon {
+        width: 30px;
+        height: 30px;
+        transition-duration: .5s;
+        transition-property: transform;
+        transform: rotate(0deg);
+        transform-origin: 15px 15px;
+    }
+
+    .refresh-icon-active {
+        transform: rotate(180deg);
+    }
+
+    .loading-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        color: #fff;
+    }
+
+    .loading-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-left: 2px;
+        font-size: 16px;
+        color: #fff;
+    }
+
+    .loading-more {
+        align-items: center;
+        justify-content: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+
+    .loading-more-text {
+        font-size: 28 rpx;
+        color: #fff;
+    }
+
+
+</style>

@@ -1,9 +1,9 @@
-import axios from './http';
+import fly from './http';
 
 import tools from './tool_function';
 
 const lib = {
-    axios,
+    fly,
     tools
 };
 

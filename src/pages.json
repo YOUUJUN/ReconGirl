@@ -3,7 +3,10 @@
         "autoscan": true,
         "custom": {
             // uni-ui 规则如下配置
-            "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+            "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+
+            //uView-ui
+            "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
         }
     },
     "pages": [
@@ -69,9 +72,36 @@
             }
         },
         {
+            "path": "pages/test/Test",
+            "style": {
+                "navigationBarTitleText": "Test",
+                "app-plus" : {
+                    "scrollIndicator" : "none"
+                }
+            }
+        },
+        {
             "path": "pages/user/user",
             "style": {
-                "navigationBarTitleText": "我的"
+                "navigationBarTitleText": "",
+                "backgroundColor" : "#F8F8F8",
+                "enablePullDownRefresh" : false,
+                "app-plus" : {
+                    "scrollIndicator" : "none",
+                    "titleNView" : {
+                        "type" : "float",
+                        "backgroundColor" : "rgba(0,0,0,0)",
+                        "blurEffect" : "dark",
+                        "buttons": [
+                            {
+                                "text" : "\ue632",
+                                "color" : "#fff",
+                                "fontSize" : "20px",
+                                "fontSrc" : "/static/iconfont/iconfont.ttf"
+                            }
+                        ]
+                    }
+                }
             }
         }
     ],

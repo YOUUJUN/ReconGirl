@@ -1,35 +1,37 @@
-import axios from 'axios';
+import Fly from 'flyio/dist/npm/fly';
+let fly = new Fly;
 
-let myDIYAxios =  (options) => {
+fly.config.withCredentials = false;
+fly.config.baseURL = "";
+fly.config.responseType = 'json';
+fly.config.responseEncoding = 'utf8';
 
-    let $axios = axios.create({
-        baseURL : 'http://192.168.3.62:3001',
-        withCredentials : true
-    });
+//添加请求拦截器
+fly.interceptors.request.use((request)=>{
+    //给所有请求添加自定义header
+    request.headers["X-Tag"]="flyio";
+    //打印出请求体
+    console.log(request.body);
+    //终止请求
+    //var err=new Error("xxx")
+    //err.request=request
+    //return Promise.reject(new Error(""))
 
-    // Add a request interceptor
-    $axios.interceptors.request.use((config) =>{
+    //可以显式返回request, 也可以不返回，没有返回值时拦截器中默认返回request
+    return request;
+})
 
-
-        return config;
-    },(error)=>{
-        return Promise.reject(error);
-    });
-
-
-    $axios.interceptors.response.use((response) =>{
-
-
-
-        //do something with response data;
+//添加响应拦截器，响应拦截器会在then/catch处理之前执行
+fly.interceptors.response.use(
+    (response) => {
         return response;
-    }, (error) =>{
-        return Promise.reject(error);
-    })
+    },
+    (err) => {
+        hideLoading();
+        //发生网络错误后会走到这里
+        //return Promise.resolve("ssss")
+    }
+);
 
 
-    return $axios(options);
-};
-
-
-export default myDIYAxios;
+export default fly;
