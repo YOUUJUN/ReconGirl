@@ -1,4 +1,4 @@
-# my-first-app-project
+# ReconGirl
 
 ## Project setup
 ```
