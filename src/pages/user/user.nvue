@@ -5,6 +5,8 @@
 
         <image src="../../static/judy.jpg" class="bgImg"></image>
 
+
+
         <list class="list">
 
             <refresh class="refresh" @refresh="onrefresh()" @pullingdown="onpullingdown"
@@ -52,6 +54,8 @@
             </cell>
 
         </list>
+
+
 
 
         <picker ref="settingPicker" @change="bindPickerChange" :value="index" :range="array" range-key="name"></picker>
@@ -141,40 +145,27 @@
 
 
 <style scoped>
-    /* #ifndef APP-PLUS */
-    page {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
-
-    /* #endif */
 
     .bgImg{
+        height: 800rpx;
         width: auto;
-        height: 600rpx;
     }
 
 
     /*----*/
 
     .container {
-        /*position: absolute;*/
-        /*left: 0;*/
-        /*right: 0;*/
-        /*top: 0;*/
-        /*bottom: 0;*/
-        background-color: rgba(0,0,0,0.8);
+        display: flex;
+        flex:1;
     }
 
     .list{
         position: absolute;
         top:0;
         bottom: 0;
-        left: 0;
-        right: 0;
+        left:0;
+        right:0;
+        flex: 1;
     }
 
 

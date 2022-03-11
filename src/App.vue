@@ -10,7 +10,7 @@
                 console.log('options');
                 setTimeout(()=>{
                     uni.navigateTo({
-                        url: '/pages/test/Test',
+                        url: '/pages/post/post',
                         success : result => {
                             console.log('result', result);
                         },
@@ -71,8 +71,10 @@
 <style>
 	/*每个页面公共css */
 
-    @import 'assets/uni.css';
-    @import 'assets/youjun_base_app.css';
+    @import '@/assets/iconfont/iconfont.css';
+
+    @import '@/assets/uni.css';
+    @import '@/assets/youjun_base_app.css';
 
     /* H5 兼容 pc 所需 */
     /* #ifdef H5 */

@@ -44,7 +44,7 @@
                             {
                                 "text": "\ue606",
                                 "colorPressed" : "#a0cfff",
-                                "fontSrc" : "/static/iconfont/iconfont.ttf",
+                                "fontSrc" : "/assets/iconfont/iconfont.ttf",
                                 "fontSize" : "20px",
                                 "float": "left",
                                 "width": "40px"
@@ -52,7 +52,7 @@
                             {
                                 "text": "\ue603",
                                 "colorPressed" : "#a0cfff",
-                                "fontSrc" : "/static/iconfont/iconfont.ttf",
+                                "fontSrc" : "/assets/iconfont/iconfont.ttf",
                                 "fontSize" : "18px",
                                 "float": "right",
                                 "width": "40px"
@@ -74,7 +74,7 @@
         {
             "path": "pages/test/Test",
             "style": {
-                "navigationBarTitleText": "Test",
+                "navigationBarTitleText": "Ok",
                 "app-plus" : {
                     "scrollIndicator" : "none"
                 }
@@ -87,17 +87,16 @@
                 "backgroundColor" : "#F8F8F8",
                 "enablePullDownRefresh" : false,
                 "app-plus" : {
-                    "scrollIndicator" : "none",
                     "titleNView" : {
-                        "type" : "float",
-                        "backgroundColor" : "rgba(0,0,0,0)",
-                        "blurEffect" : "dark",
+                        "type": "transparent",
+                        "titleColor": "#fff",
+                        "backgroundColor": "#007AFF",
                         "buttons": [
                             {
                                 "text" : "\ue632",
                                 "color" : "#fff",
                                 "fontSize" : "20px",
-                                "fontSrc" : "/static/iconfont/iconfont.ttf"
+                                "fontSrc" : "/assets/iconfont/iconfont.ttf"
                             }
                         ]
                     }

@@ -1,5 +1,6 @@
 <template>
     <view class="container">
+
         <view class="cropper-wrap">
             <image-cropper
                     id="image-cropper"
@@ -15,26 +16,48 @@
             />
         </view>
         <view class="ctrls-wrap">
-            <view class="ctrl" @click="statusChange">图库</view>
-
-            <view class="ctrl" @tap="selectImg">上传图片</view>
-            <view class="ctrl" @tap="changeImg">图片模式</view>
-            <view class="ctrl" @tap="cutImg">裁剪图片</view>
-            <u-button @click="statusChange" :size="'mini'" :ripple="true" :hairLine="true" :type="'default'">山川天</u-button>
+<!--            <view class="ctrl" @click="statusChange">图库</view>-->
+<!--            <view class="ctrl" @tap="selectImg">上传图片</view>-->
+<!--            <view class="ctrl" @tap="changeImg">图片模式</view>-->
+<!--            <view class="ctrl" @tap="cutImg">裁剪图片</view>-->
+            <u-button class="ctrlBtn" @click="statusChange" :ripple="true" :hairLine="false" :type="'default'">图库</u-button>
+            <u-button class="ctrlBtn" @click="selectImg" :ripple="true" :hairLine="false" :type="'default'">选择图片</u-button>
+            <u-button class="ctrlBtn" @click="changeImg" :ripple="true" :hairLine="false" :type="'default'">图片模式</u-button>
+            <u-button class="ctrlBtn" @click="cutImg" :ripple="true" :hairLine="false" :type="'default'">裁剪图片</u-button>
         </view>
 
         <div class="photo-picker-body">
 
             <scroll-view class="picker-content" scroll-y="true">
 
-                <view class="scroll-view-item picker-row" v-for="item of currentImgs"  :style="'width :'+imgSize+'px;height:' + imgSize + 'px;'">
-                    <img class="picker-img" :src="item.url">
-                </view>
+<!--                <radio-group @change="radioChange">-->
+<!--                    <view class="scroll-view-item picker-row"  :style="'width :'+imgSize+'px;height:' + imgSize + 'px;'" v-for="(item, index) in currentImgs">-->
+
+<!--                        <label class="radio-wrap">-->
+<!--                            <radio :value="item.url" :checked="index === current" />-->
+<!--                            <img class="picker-img" :src="item.url">-->
+<!--                        </label>-->
+
+<!--                    </view>-->
+<!--                </radio-group>-->
+
+                <checkbox-group class="group-wrap">
+                    <label class="img-wrap" v-for="(item, index) in currentImgs"  :style="'max-width :'+imgSize+'px;height:' + imgSize + 'px;'">
+                        <checkbox class="img-check" value="item.url"/>
+                        <img class="picker-img" :src="item.url">
+                        <!-- <img class="picker-img" :src="item.url"   :style="'width :'+imgSize+'px;height:' + imgSize + 'px;'"> -->
+                    </label>
+                </checkbox-group>
 
 
-                <view class="scroll-view-item picker-row" v-for="item of 100"  :style="'width :'+imgSize+'px;height:' + imgSize + 'px;'">
-                    <img class="picker-img" src="static/judy.jpg">
-                </view>
+<!--                <view class="scroll-view-item picker-row" v-for="item of currentImgs"  :style="'width :'+imgSize+'px;height:' + imgSize + 'px;'">-->
+<!--                    <img class="picker-img" :src="item.url">-->
+<!--                </view>-->
+
+
+<!--                <view class="scroll-view-item picker-row" v-for="item of 100"  :style="'width :'+imgSize+'px;height:' + imgSize + 'px;'">-->
+<!--                    <img class="picker-img" src="static/judy.jpg">-->
+<!--                </view>-->
 
 
             </scroll-view>
@@ -65,7 +88,7 @@
         },
         data() {
             return {
-                imgSize: 170,
+                imgSize: 0,
                 currentImgs: [],
                 pageHeight : "auto",
 
@@ -77,7 +100,37 @@
                 range: ['一', '片', '冰', '心', '在', '玉', '壶'],
                 rangKey: 'name',
                 showPicker : false,
-                defaultSelector : [0]
+                defaultSelector : [0],
+
+
+                items: [{
+                    value: 'USA',
+                    name: '美国'
+                },
+                    {
+                        value: 'CHN',
+                        name: '中国',
+                        checked: 'true'
+                    },
+                    {
+                        value: 'BRA',
+                        name: '巴西'
+                    },
+                    {
+                        value: 'JPN',
+                        name: '日本'
+                    },
+                    {
+                        value: 'ENG',
+                        name: '英国'
+                    },
+                    {
+                        value: 'FRA',
+                        name: '法国'
+                    },
+                ],
+
+                current: 0
             }
         },
 
@@ -90,6 +143,34 @@
             this.getImg();
         },
         methods: {
+
+
+            radioChange(evt) {
+                for (let i = 0; i < this.currentImgs.length; i++) {
+                    if (this.currentImgs[i].url === evt.detail.value) {
+                        console.log('i==============>', i);
+                        this.current = i;
+                        break;
+                    }
+                }
+            },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             load(path, info) {
                 // console.log(path, info)
                 // setTimeout(() => {
@@ -214,23 +295,23 @@
                 });
 
 
-                // var FileSystem = plus.io.resolveLocalFileSystemURL(localDoc, (fs) => {
-                //     console.log('fs',fs);
-                //     var directoryReader = fs.createReader();
-                //     console.log('directoryReader',directoryReader);
-                //     directoryReader.readEntries( ( entries ) => {
-                //         console.log('entries',entries);
-                //         let fileReader = entries[12].createReader();
-                //         fileReader.readEntries((files) =>{
-                //             console.log('files==>',files);
-                //             console.log('this==>',this);
-                //             this.setImgData(files);
-                //         })
-                //     })
-                //
-                // },(err) => {
-                //     console.log(err);
-                // });
+                var FileSystem = plus.io.resolveLocalFileSystemURL(localDoc, (fs) => {
+                    console.log('fs',fs);
+                    var directoryReader = fs.createReader();
+                    console.log('directoryReader',directoryReader);
+                    directoryReader.readEntries( ( entries ) => {
+                        console.log('entries',entries);
+                        let fileReader = entries[12].createReader();
+                        fileReader.readEntries((files) =>{
+                            console.log('files==>',files);
+                            console.log('this==>',this);
+                            this.setImgData(files);
+                        })
+                    })
+                
+                },(err) => {
+                    console.log(err);
+                });
 
             },
 
@@ -342,20 +423,67 @@
         flex-direction: column;
     }
     .picker-row{
-        display: inline-block;
-    }
-    .picker-img{
         box-sizing: border-box;
         width:100%;
         height:100%;
-        padding: 0.5px;
+        display: inline-block;
+        box-sizing: border-box;
+        background-color: red;
     }
+
 
 
     /*---uView-ui-picker--*/
     .u-datetime-picker{
         width:100%;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+    /*---checkbox---*/
+
+    .group-wrap{
+        display:flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .img-wrap{
+        position: relative;
+        width: 25%;
+        padding:0;
+        border:0.5px solid #fff;
+        margin:0;
+        flex: auto;
+        box-sizing: border-box;
+    }
+
+    .img-check{
+        position: absolute;
+        right:0;
+        top:0;
+    }
+
+    .picker-img{
+        box-sizing: border-box;
+        width:100%;
+        height:100%;
+        padding:0;
+    }
+
+
+
+
+
 
 </style>
 <style lang="scss" scoped>
@@ -383,3 +511,31 @@
         }
     }
 </style>
+
+
+<style>
+
+    .ctrls-wrap .ctrlBtn{
+        flex: 1;
+        font-size: 34rpx;
+        color: rgba(0,0,0,0.6);
+        background: #fafafa;
+        border:0px solid #fff;
+        line-height: 96rpx;
+        height:96rpx;
+    }
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+

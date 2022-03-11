@@ -1,7 +1,7 @@
 <template>
 
     <view class="nice-cropper" :style="{height: height, width: width, background: background}" @touchstart="start" @touchmove.stop="move" @touchcancel="end" @touchend="end">
-        <image class="nice-cropper__image" ref="img" :src="src" :style="{transform: transformMeta, width: image.width + 'px', height: image.height + 'px'}" />
+        <image mode="aspectFit" class="nice-cropper__image" ref="img" :src="src" :style="{transform: transformMeta, width: image.width + 'px', height: image.height + 'px'}" />
         <view class="nice-cropper__ctrls" :class="{'nice-cropper__ctrls--view' : view, 'nice-cropper__ctrls--border': showCtrlBorder, 'nice-cropper__ctrls--circle': view && circleView && maskType !== 'outline'}" :style="ctrlStyle">
             <view class="nice-cropper__corner nice-cropper__corner--lt" @touchstart="setCutMode('lt')" />
             <view class="nice-cropper__corner nice-cropper__corner--rt" @touchstart="setCutMode('rt')" />
