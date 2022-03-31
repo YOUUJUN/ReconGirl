@@ -3,13 +3,13 @@
     <view class="uni-margin-wrap">
         <swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
             <swiper-item>
-                <img src="static/killa.jpg" class="swiper-item">
+                <image src="@/static/killa.jpg" class="swiper-item">
             </swiper-item>
             <swiper-item>
-                <img src="static/judy.jpg" class="swiper-item">
+                <image src="@/static/judy.jpg" class="swiper-item">
             </swiper-item>
             <swiper-item>
-                <img src="static/judy.jpg" class="swiper-item">
+                <image src="@/static/judy.jpg" class="swiper-item">
             </swiper-item>
         </swiper>
     </view>
@@ -45,6 +45,10 @@
         display: block;
         width : 100%;
         height: auto;
+    }
+
+    .swiper-item image{
+        width:100%;
     }
 
 </style>

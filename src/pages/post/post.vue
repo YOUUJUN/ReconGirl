@@ -26,7 +26,7 @@
             <u-button class="ctrlBtn" @click="cutImg" :ripple="true" :hairLine="false" :type="'default'">裁剪图片</u-button>
         </view>
 
-        <div class="photo-picker-body">
+        <view class="photo-picker-body">
 
             <scroll-view class="picker-content" scroll-y="true">
 
@@ -62,7 +62,7 @@
 
             </scroll-view>
 
-        </div>
+        </view>
 
 
 

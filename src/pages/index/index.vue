@@ -10,7 +10,7 @@
 
 <script>
 
-	import Navigation from '@/components/Navigation/Navigation.vue';
+	// import Navigation from '@/components/Navigation/Navigation.vue';
 
 	import scrollPanel from '@/components/ScrollPanel/ScrollPanel.vue';
 
@@ -21,7 +21,7 @@
 			}
 		},
 
-		components : {scrollPanel, Navigation},
+		components : {scrollPanel},
 
 		onNavigationBarButtonTap(obj){
 			let index = obj.index;

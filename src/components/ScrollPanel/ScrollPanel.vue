@@ -1,312 +1,312 @@
 <template>
 
-    <div id="panel">
+    <view id="panel">
 
-        <div class="sharer-container">
+        <view class="sharer-container">
 
-            <div class="sharer-header">
+            <view class="sharer-header">
 
-                <div class="sharer-header-left">
+                <view class="sharer-header-left">
 
-                    <a class="user-img" href="javascript:void(0);">
-                        <img src="static/youjun.jpg" @click="test">
-                    </a>
+                    <navigator class="user-img" href="javascript:void(0);">
+                        <image src="@/static/youjun.jpg" @click="test">
+                    </navigator>
 
-                    <div class="user-info">
+                    <view class="user-info">
 
                         <ul class="user-info-list">
-                            <li><a class="user-name">YOUJUN</a></li>
-                            <!--                        <li><span class="user-post-time">2021/4/10</span></li>-->
+                            <li><navigator class="user-name">YOUJUN</navigator></li>
+                            <!--                        <li><text class="user-post-time">2021/4/10</text></li>-->
                         </ul>
 
-                    </div>
+                    </view>
 
-                </div>
+                </view>
 
 
                 <button class="yj-btn-icon" style="margin-right:18rpx;">
-                    <span class="iconfont icon-gengduo"></span>
+                    <text class="iconfont icon-gengduo"></text>
                 </button>
 
-            </div>
+            </view>
 
-<!--            <div class="yj-divider"></div>-->
+<!--            <view class="yj-divider"></view>-->
 
-            <div class="sharer-content">
+            <view class="sharer-content">
 
-                <img src="static/killa.jpg">
+                <image src="@/static/killa.jpg" mode="aspectFill">
 
-            </div>
+            </view>
 
-<!--            <div class="yj-divider"></div>-->
+<!--            <view class="yj-divider"></view>-->
 
-            <div class="sharer-foot">
+            <view class="sharer-foot">
 
-                <div class="sharer-operator">
+                <view class="sharer-operator">
 
-                    <div class="sharer-operator-left">
+                    <view class="sharer-operator-left">
 
                         <button class="yj-btn-icon">
-                            <span class="iconfont icon-aixin"></span>
+                            <text class="iconfont icon-aixin"></text>
                         </button>
 
                         <button class="yj-btn-icon">
-                            <span class="iconfont icon-pinglun1"></span>
+                            <text class="iconfont icon-pinglun1"></text>
                         </button>
 
                         <button class="yj-btn-icon">
-                            <span class="iconfont icon-fenxiang"></span>
+                            <text class="iconfont icon-fenxiang"></text>
                         </button>
 
-                    </div>
+                    </view>
 
 
-                </div>
+                </view>
 
 <!--                <h3 class="content-description">-->
-<!--                    <span class="content-name">Human digestive system</span>-->
-<!--                    <span class="content-description-btn"><i ref="icon" class="fa fa-angle-down"></i></span>-->
+<!--                    <text class="content-name">Human digestive system</text>-->
+<!--                    <text class="content-description-btn"><i ref="icon" class="fa fa-angle-down"></i></text>-->
 <!--                </h3>-->
 
-                <div class="content-view-info">
-                    <span class="count">878万</span><span>次赞</span>
-                </div>
+                <view class="content-view-info">
+                    <text class="count">878万</text><text>次赞</text>
+                </view>
 
-                <div class="sharer-comments">
+                <view class="sharer-comments">
 
-                    <div class="sharer-comments-item">
-                        <span class="sharer-comments-user">YOUJUN</span>
-                        <span class="sharer-comments-content">{{title}}</span><span class="sharer-comments-postfix">{{postfix}}</span>
-                    </div>
+                    <view class="sharer-comments-item">
+                        <text class="sharer-comments-user">YOUJUN</text>
+                        <text class="sharer-comments-content">{{title}}</text><text class="sharer-comments-postfix">{{postfix}}</text>
+                    </view>
 
-                    <div class="sharer-comments-item">
-                        <span class="sharer-comments-user">LVNDMARK</span>
-                        <span class="sharer-comments-content">Let's go kill some killa</span><span class="sharer-comments-postfix">{{postfix}}</span>
-                    </div>
+                    <view class="sharer-comments-item">
+                        <text class="sharer-comments-user">LVNDMARK</text>
+                        <text class="sharer-comments-content">Let's go kill some killa</text><text class="sharer-comments-postfix">{{postfix}}</text>
+                    </view>
 
-                    <div class="sharer-comments-item">
-                        <span class="sharer-comments-user">ERIC</span>
-                        <span class="sharer-comments-content">Well, this is a test message, this is a test message,this is a test message, this is a test message</span><span class="sharer-comments-postfix">{{postfix}}</span>
-                    </div>
-
-
-                </div>
-
-                <div class="sharer-time">
-                    <span>11个月前</span>
-                </div>
-
-            </div>
-
-            <div class="yj-divider"></div>
+                    <view class="sharer-comments-item">
+                        <text class="sharer-comments-user">ERIC</text>
+                        <text class="sharer-comments-content">Well, this is a test message, this is a test message,this is a test message, this is a test message</text><text class="sharer-comments-postfix">{{postfix}}</text>
+                    </view>
 
 
-        </div>
+                </view>
 
-        <div class="sharer-container">
+                <view class="sharer-time">
+                    <text>11个月前</text>
+                </view>
 
-            <div class="sharer-header">
+            </view>
 
-                <div class="sharer-header-left">
+            <view class="yj-divider"></view>
 
-                    <a class="user-img" href="javascript:void(0);">
-                        <img src="static/youjun.jpg" @click="test">
-                    </a>
 
-                    <div class="user-info">
+        </view>
+
+        <view class="sharer-container">
+
+            <view class="sharer-header">
+
+                <view class="sharer-header-left">
+
+                    <navigator class="user-img" href="javascript:void(0);">
+                        <image src="@/static/youjun.jpg" @click="test">
+                    </navigator>
+
+                    <view class="user-info">
 
                         <ul class="user-info-list">
-                            <li><a class="user-name">YOUJUN</a></li>
-                            <!--                        <li><span class="user-post-time">2021/4/10</span></li>-->
+                            <li><navigator class="user-name">YOUJUN</navigator></li>
+                            <!--                        <li><text class="user-post-time">2021/4/10</text></li>-->
                         </ul>
 
-                    </div>
+                    </view>
 
-                </div>
+                </view>
 
 
                 <button class="yj-btn-icon" style="margin-right:18rpx;">
-                    <span class="iconfont icon-gengduo"></span>
+                    <text class="iconfont icon-gengduo"></text>
                 </button>
 
-            </div>
+            </view>
 
-            <!--            <div class="yj-divider"></div>-->
+            <!--            <view class="yj-divider"></view>-->
 
-            <div class="sharer-content">
+            <view class="sharer-content">
 
-                <img src="static/judy.jpg">
+                <image src="@/static/judy.jpg" mode="aspectFill">
 
-            </div>
+            </view>
 
-            <!--            <div class="yj-divider"></div>-->
+            <!--            <view class="yj-divider"></view>-->
 
-            <div class="sharer-foot">
+            <view class="sharer-foot">
 
-                <div class="sharer-operator">
+                <view class="sharer-operator">
 
-                    <div class="sharer-operator-left">
+                    <view class="sharer-operator-left">
 
                         <button class="yj-btn-icon">
-                            <span class="iconfont icon-aixin"></span>
+                            <text class="iconfont icon-aixin"></text>
                         </button>
 
                         <button class="yj-btn-icon">
-                            <span class="iconfont icon-pinglun1"></span>
+                            <text class="iconfont icon-pinglun1"></text>
                         </button>
 
                         <button class="yj-btn-icon">
-                            <span class="iconfont icon-fenxiang"></span>
+                            <text class="iconfont icon-fenxiang"></text>
                         </button>
 
-                    </div>
+                    </view>
 
 
-                </div>
+                </view>
 
                 <!--                <h3 class="content-description">-->
-                <!--                    <span class="content-name">Human digestive system</span>-->
-                <!--                    <span class="content-description-btn"><i ref="icon" class="fa fa-angle-down"></i></span>-->
+                <!--                    <text class="content-name">Human digestive system</text>-->
+                <!--                    <text class="content-description-btn"><i ref="icon" class="fa fa-angle-down"></i></text>-->
                 <!--                </h3>-->
 
-                <div class="content-view-info">
-                    <span class="count">878万</span><span>次赞</span>
-                </div>
+                <view class="content-view-info">
+                    <text class="count">878万</text><text>次赞</text>
+                </view>
 
-                <div class="sharer-comments">
+                <view class="sharer-comments">
 
-                    <div class="sharer-comments-item">
-                        <span class="sharer-comments-user">YOUJUN</span>
-                        <span class="sharer-comments-content">{{title}}</span><span class="sharer-comments-postfix">{{postfix}}</span>
-                    </div>
+                    <view class="sharer-comments-item">
+                        <text class="sharer-comments-user">YOUJUN</text>
+                        <text class="sharer-comments-content">{{title}}</text><text class="sharer-comments-postfix">{{postfix}}</text>
+                    </view>
 
-                    <div class="sharer-comments-item">
-                        <span class="sharer-comments-user">LVNDMARK</span>
-                        <span class="sharer-comments-content">Let's go kill some killa</span><span class="sharer-comments-postfix">{{postfix}}</span>
-                    </div>
+                    <view class="sharer-comments-item">
+                        <text class="sharer-comments-user">LVNDMARK</text>
+                        <text class="sharer-comments-content">Let's go kill some killa</text><text class="sharer-comments-postfix">{{postfix}}</text>
+                    </view>
 
-                    <div class="sharer-comments-item">
-                        <span class="sharer-comments-user">ERIC</span>
-                        <span class="sharer-comments-content">Well, this is a test message, this is a test message,this is a test message, this is a test message</span><span class="sharer-comments-postfix">{{postfix}}</span>
-                    </div>
-
-
-                </div>
-
-                <div class="sharer-time">
-                    <span>11个月前</span>
-                </div>
-
-            </div>
-
-            <div class="yj-divider"></div>
+                    <view class="sharer-comments-item">
+                        <text class="sharer-comments-user">ERIC</text>
+                        <text class="sharer-comments-content">Well, this is a test message, this is a test message,this is a test message, this is a test message</text><text class="sharer-comments-postfix">{{postfix}}</text>
+                    </view>
 
 
-        </div>
+                </view>
 
-        <div class="sharer-container">
+                <view class="sharer-time">
+                    <text>11个月前</text>
+                </view>
 
-            <div class="sharer-header">
+            </view>
 
-                <div class="sharer-header-left">
+            <view class="yj-divider"></view>
 
-                    <a class="user-img" href="javascript:void(0);">
-                        <img src="static/youjun.jpg" @click="test">
-                    </a>
 
-                    <div class="user-info">
+        </view>
+
+        <view class="sharer-container">
+
+            <view class="sharer-header">
+
+                <view class="sharer-header-left">
+
+                    <navigator class="user-img" href="javascript:void(0);">
+                        <image src="@/static/youjun.jpg" @click="test">
+                    </navigator>
+
+                    <view class="user-info">
 
                         <ul class="user-info-list">
-                            <li><a class="user-name">YOUJUN</a></li>
-                            <!--                        <li><span class="user-post-time">2021/4/10</span></li>-->
+                            <li><navigator class="user-name">YOUJUN</navigator></li>
+                            <!--                        <li><text class="user-post-time">2021/4/10</text></li>-->
                         </ul>
 
-                    </div>
+                    </view>
 
-                </div>
+                </view>
 
 
                 <button class="yj-btn-icon" style="margin-right:18rpx;">
-                    <span class="iconfont icon-gengduo"></span>
+                    <text class="iconfont icon-gengduo"></text>
                 </button>
 
-            </div>
+            </view>
 
-            <!--            <div class="yj-divider"></div>-->
+            <!--            <view class="yj-divider"></view>-->
 
-            <div class="sharer-content">
+            <view class="sharer-content">
 
-<!--                <img src="static/killa.jpg">-->
+<!--                <image src="@/static/killa.jpg">-->
                 <image-sharer></image-sharer>
 
-            </div>
+            </view>
 
-            <!--            <div class="yj-divider"></div>-->
+            <!--            <view class="yj-divider"></view>-->
 
-            <div class="sharer-foot">
+            <view class="sharer-foot">
 
-                <div class="sharer-operator">
+                <view class="sharer-operator">
 
-                    <div class="sharer-operator-left">
+                    <view class="sharer-operator-left">
 
                         <button class="yj-btn-icon">
-                            <span class="iconfont icon-aixin"></span>
+                            <text class="iconfont icon-aixin"></text>
                         </button>
 
                         <button class="yj-btn-icon">
-                            <span class="iconfont icon-pinglun1"></span>
+                            <text class="iconfont icon-pinglun1"></text>
                         </button>
 
                         <button class="yj-btn-icon">
-                            <span class="iconfont icon-fenxiang"></span>
+                            <text class="iconfont icon-fenxiang"></text>
                         </button>
 
-                    </div>
+                    </view>
 
 
-                </div>
+                </view>
 
                 <!--                <h3 class="content-description">-->
-                <!--                    <span class="content-name">Human digestive system</span>-->
-                <!--                    <span class="content-description-btn"><i ref="icon" class="fa fa-angle-down"></i></span>-->
+                <!--                    <text class="content-name">Human digestive system</text>-->
+                <!--                    <text class="content-description-btn"><i ref="icon" class="fa fa-angle-down"></i></text>-->
                 <!--                </h3>-->
 
-                <div class="content-view-info">
-                    <span class="count">878万</span><span>次赞</span>
-                </div>
+                <view class="content-view-info">
+                    <text class="count">878万</text><text>次赞</text>
+                </view>
 
-                <div class="sharer-comments">
+                <view class="sharer-comments">
 
-                    <div class="sharer-comments-item">
-                        <span class="sharer-comments-user">YOUJUN</span>
-                        <span class="sharer-comments-content">{{title}}</span><span class="sharer-comments-postfix">{{postfix}}</span>
-                    </div>
+                    <view class="sharer-comments-item">
+                        <text class="sharer-comments-user">YOUJUN</text>
+                        <text class="sharer-comments-content">{{title}}</text><text class="sharer-comments-postfix">{{postfix}}</text>
+                    </view>
 
-                    <div class="sharer-comments-item">
-                        <span class="sharer-comments-user">LVNDMARK</span>
-                        <span class="sharer-comments-content">Let's go kill some killa</span><span class="sharer-comments-postfix">{{postfix}}</span>
-                    </div>
+                    <view class="sharer-comments-item">
+                        <text class="sharer-comments-user">LVNDMARK</text>
+                        <text class="sharer-comments-content">Let's go kill some killa</text><text class="sharer-comments-postfix">{{postfix}}</text>
+                    </view>
 
-                    <div class="sharer-comments-item">
-                        <span class="sharer-comments-user">ERIC</span>
-                        <span class="sharer-comments-content">Well, this is a test message, this is a test message,this is a test message, this is a test message</span><span class="sharer-comments-postfix">{{postfix}}</span>
-                    </div>
-
-
-                </div>
-
-                <div class="sharer-time">
-                    <span>11个月前</span>
-                </div>
-
-            </div>
-
-            <div class="yj-divider"></div>
+                    <view class="sharer-comments-item">
+                        <text class="sharer-comments-user">ERIC</text>
+                        <text class="sharer-comments-content">Well, this is a test message, this is a test message,this is a test message, this is a test message</text><text class="sharer-comments-postfix">{{postfix}}</text>
+                    </view>
 
 
-        </div>
+                </view>
 
-    </div>
+                <view class="sharer-time">
+                    <text>11个月前</text>
+                </view>
+
+            </view>
+
+            <view class="yj-divider"></view>
+
+
+        </view>
+
+    </view>
 
 </template>
 
@@ -389,7 +389,7 @@
         margin-right: 12rpx;
     }
 
-    .user-img img {
+    .user-img image {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
         flex: 0 0 auto;
@@ -448,6 +448,10 @@
     .sharer-content{
         width : 100%;
         border-top: 2rpx solid rgba(0,0,0,0.1);
+    }
+
+    .sharer-content image{
+        width:100%;
     }
 
     .content-description{
