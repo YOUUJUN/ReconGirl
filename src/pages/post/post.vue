@@ -403,6 +403,7 @@
             choiceImg (item, index){
                 this.choicedImg = item;
                 this.choicedImgIndex = index;
+                this.src = item.url;
                 console.log('choicedImg',item);
             }
 
