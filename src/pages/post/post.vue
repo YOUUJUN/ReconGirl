@@ -41,10 +41,12 @@
 <!--                    </view>-->
 <!--                </radio-group>-->
 
+                <!-- <image class="picker-img" src="/storage/emulated/0/Pictures/QQ/QQ图片20201203200758.png"> -->
+
                 <checkbox-group class="group-wrap">
-                    <label class="img-wrap" v-for="(item, index) in currentImgs"  :style="'max-width :'+imgSize+'px;height:' + imgSize + 'px;'">
+                    <label @click="choiceImg(item, index)" class="img-wrap" v-for="(item, index) in currentImgs"  :style="'max-width :'+imgSize+'px;height:' + imgSize + 'px;'">
                         <checkbox class="img-check" value="item.url"/>
-                        <img class="picker-img" :src="item.url">
+                        <image class="picker-img" :class="{choiced : index === choicedImgIndex}" :src="item.url" mode="aspectFill">
                         <!-- <img class="picker-img" :src="item.url"   :style="'width :'+imgSize+'px;height:' + imgSize + 'px;'"> -->
                     </label>
                 </checkbox-group>
@@ -78,6 +80,7 @@
 </template>
 <script>
     import ImageCropper from '@/components/post-cropper/post-cropper.vue'
+    // import func from 'vue-editor-bridge';
     // import ImageCropper from '@/components/uniapp-nice-cropper-mode-1/cropper.vue'
     // import ImageCropper from '@/components/kd/cropper/cropper.vue'
 
@@ -130,7 +133,11 @@
                     },
                 ],
 
-                current: 0
+                current: 0,
+
+
+                choicedImg : {},
+                choicedImgIndex : '',
             }
         },
 
@@ -353,13 +360,17 @@
 
             setImgData(files){
                 let cache = [];
+                let prefix = "file://";
                 for(let item of files){
                     let obj = {};
                     if(item.isFile === true){
-                        obj.url = item.fullPath;
+                        obj.url = prefix.concat(item.fullPath);
                         cache.push(obj);
                     }
                 }
+
+                console.log("cache", cache);
+
                 this.currentImgs = cache;
             },
 
@@ -380,9 +391,28 @@
                     console.log('files==>', files);
                     this.setImgData(files);
                 })
+            },
+
+
+
+
+
+
+            /*---选中图片---*/
+
+            choiceImg (item, index){
+                this.choicedImg = item;
+                this.choicedImgIndex = index;
+                console.log('choicedImg',item);
             }
 
+
+
+
+
+
         }
+
     }
 </script>
 <style>
@@ -471,6 +501,7 @@
         position: absolute;
         right:0;
         top:0;
+        z-index: 2;
     }
 
     .picker-img{
@@ -478,8 +509,12 @@
         width:100%;
         height:100%;
         padding:0;
+        z-index: 1;
     }
 
+    .choiced{
+        filter: opacity(50%);
+    }
 
 
 

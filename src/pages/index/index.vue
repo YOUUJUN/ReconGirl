@@ -3,14 +3,10 @@
 
 		<scroll-panel></scroll-panel>
 
-<!--		<img class="logo" src="/static/logo.png" />-->
-
 	</view>
 </template>
 
 <script>
-
-	// import Navigation from '@/components/Navigation/Navigation.vue';
 
 	import scrollPanel from '@/components/ScrollPanel/ScrollPanel.vue';
 
